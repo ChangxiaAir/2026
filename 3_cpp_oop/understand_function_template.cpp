@@ -99,3 +99,36 @@ int main() {
  * template bool compare<int>(int,int);
  * template bool compare<double>(double,double);
  */
+
+#if 0
+/*
+ * 函数模板
+ * 模板的非类型参数 非类型变量本身都是常量，只能使用，而不能修改
+ * 非类型参数必须是整数类型（整数或者地址、引用都可以）
+ */
+
+template <typename T, int SIZE>
+void order(T *arr) {
+    for (int i = 0; i < SIZE-1; i++) {
+        for (int j = 0; j < SIZE-1-i; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+int main() {
+
+    int arr[] = {12,45,33,56,42,6,2,1,45};
+    const int size = sizeof(arr)/sizeof(arr[0]); // 常量表达式，编译过程中已经被计算过了
+    order<int, size>(arr);
+
+    for (int val:arr) {
+        cout << val << " ";
+    }
+    cout << endl;
+    return 0;
+}
+#endif
