@@ -28,6 +28,7 @@ public:
         return Complex(real+rhs.real,imag+rhs.imag); // 相比上面的 少了一个临时对象的构造和析构，效率++
     }
 
+    // operator++(int) 带一个整型参数 后置++
     Complex operator++(int) {
         // Complex comp = *this;
         // real += 1;
@@ -37,6 +38,7 @@ public:
         return Complex(real++,imag++); // 少了一个对象的构造和析构的过程
     }
 
+    // operator++() 不带参数 前置++
     Complex& operator++() { // Complex& 不用产生临时对象
         real += 1;
         imag += 1;
